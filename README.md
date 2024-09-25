@@ -25,29 +25,39 @@ VK Stores is a customizable store system for FiveM servers using the QBCore fram
 Edit the `config.lua` file to set up your stores:
 
 ```lua
-Config.Stores = {
-    ["247supermarket"] = {
-        label = "24/7 Supermarket",
-        blip = {
-            sprite = 52,
-            color = 2,
-            scale = 0.6,
-            showBlip = true
-        },
-        locations = {
-            {
-                coords = vector4(24.47, -1347.47, 29.5, 271.66),
-                ped = {
-                    model = "mp_m_shopkeep_01",
-                    scenario = "WORLD_HUMAN_STAND_MOBILE"
-                },
-                job = "police", -- Optional: Restrict access to specific job
-                gang = "ballas" -- Optional: Restrict access to specific gang
+Config = {
+    MaxDistance = 30.0, -- Max distance to show nearby players (default: 30.0)
+    InteractionDistance = 2.0, -- Distance to interact with the store (default: 2.0)
+    Stores = {
+        generalstore = {
+            label = "General Store", -- Label for the store (default: "General Store") both blip and menu header.
+            blip = {
+                sprite = 59,
+                color = 3,
+                scale = 0.8,
+                showBlip = true,
             },
+            items = {
+                {name = "coffee", price = 30},
+                -- Add items here
+            },
+            locations = {
+                {
+                    coords = vector4(24.5, -1346.19, 29.5, 266.78),
+                    ped = {
+                        model = "s_f_y_shop_mid",
+                        scenario = "WORLD_HUMAN_STAND_MOBILE",
+                    }
+                    -- you can lock each ped to a gang or job here.
+            -- Example:
+                    -- job = "police", 
+                    -- gang = "ballas",
+                },
+                -- more store locations here
+            }
         },
-        items = {
-            { name = "water_bottle", price = 2 },
-            { name = "sandwich", price = 3 },
-        }
-    },
+
+        -- Add more store types here
+    }
 }
+
