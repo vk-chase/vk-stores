@@ -293,3 +293,7 @@ AddEventHandler('onResourceStop', function(resourceName)
         DeletePed(ped)
     end
 end)
+
+CreateThread(function()
+    CreateBlips()
+end)
